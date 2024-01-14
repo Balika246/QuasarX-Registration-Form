@@ -2,14 +2,35 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Document</title>
+    <title>QuasarX-Registration-form</title>
     <link rel="shortcut icon" href="favicon.png">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">`
+    <script src="https://kit.fontawesome.com/2cce998f99.js"></script>
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
+
+    <!-- Popup -->
+    <div class="popup center">
+        <div class="icon">
+            <i class="fa fa-check"></i>
+        </div>
+        <div class="title">
+            Success!!
+        </div>
+        <div class="description">
+            Welcome to the QuasarX family! <br>
+            The QuasarX team is on the hunt for exceptional minds. Stay tuned – the chosen ones will hear from us soon.
+        </div>
+        <div class="dismiss-btn">
+            <button id="dismiss-popup-btn">
+                Dismiss
+            </button>
+        </div>
+    </div>
+
     <div class="container">
-        <div class="title">Resitration</div>
+        <div class="title">Registration</div>
         <form method="post" action="https://sheetdb.io/api/v1/8c1vrmuvj6fxz" name="form" id="sheetdb-form">
             <div class="user-details">
                 <div class="input-box">
@@ -35,7 +56,7 @@
             </div>
             <div class="gender-details">
                 <input type="radio" name="male" id="dot-1" value="male">
-                <input type="radio" name="Female" id="dot-2" value="Female">
+                <input type="radio" name="female" id="dot-2" value="Female">
                 <span class="gender-title">Gender</span>
                 <div class="category">
                     <label for="dot-1">
@@ -48,21 +69,24 @@
                     </label>
                 </div>
             </div>
+            
             <div class="button">
-                <input type="submit" name="btn" value="Register">
+                <input type="submit" name="btn" id="btn" value="Register">
             </div>
         </form>
     </div>
     <script>
-        const scriptURL = 'https://script.google.com/macros/s/AKfycbyWffnHKzrvtgBf9vOVXHRiKWswgrOCmTKpThJuUUaIDv1r8xUh3NpA_7aDIBdQvA/exec'
-        const form = document.forms['name']
-      
-        form.addEventListener('submit', e => {
-          e.preventDefault()
-          fetch(scriptURL, { method: 'POST', body: new FormData(form)})
-            .then(response => console.log('Success!', response))
-            .catch(error => console.error('Error!', error.message))
-        })
+        document.getElementById("sheetdb-form").addEventListener("submit", function (e) {
+            e.preventDefault();
+            document.querySelector(".popup").classList.add("active");
+        });
+    
+        document.getElementById("dismiss-popup-btn").addEventListener("click", function () {
+            document.querySelector(".popup").classList.remove("active");
+        });
+    </script>
+    
+    <script src="index.js">
       </script>
 </body>
 </html>
